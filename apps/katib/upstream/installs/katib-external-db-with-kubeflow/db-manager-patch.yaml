@@ -1,5 +1,3 @@
-# this file is a copy of apps/katib/upstream/installs/katib-external-db/patches/db-manager.yaml
-# kustomize requires the patches to be under the same directory as kustomization.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,25 +14,25 @@ spec:
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: katib-mysql-secrets
-                  key: DB_USER
+                  name: mysql-secret
+                  key: username
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: katib-mysql-secrets
-                  key: DB_PASSWORD
+                  name: mysql-secret
+                  key: password
             - name: KATIB_MYSQL_DB_DATABASE
               valueFrom:
                 secretKeyRef:
-                  name: katib-mysql-secrets
-                  key: KATIB_MYSQL_DB_DATABASE
+                  name: mysql-secret
+                  key: database
             - name: KATIB_MYSQL_DB_HOST
               valueFrom:
                 secretKeyRef:
-                  name: katib-mysql-secrets
-                  key: KATIB_MYSQL_DB_HOST
+                  name: mysql-secret
+                  key: host
             - name: KATIB_MYSQL_DB_PORT
               valueFrom:
                 secretKeyRef:
-                  name: katib-mysql-secrets
-                  key: KATIB_MYSQL_DB_PORT
+                  name: mysql-secret
+                  key: port
